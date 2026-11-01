@@ -19,6 +19,10 @@ Ein Benutzer soll ein auf D&D Beyond erworbenes bzw. berechtigt zugängliches Qu
 - **Importplanung:** Stabile Herkunftsschlüssel aus Quelle, Buch-ID, Inhaltstyp, Quell-ID, Edition und Variante. Dubletten und ungültige Datensätze werden erkannt; 2014/2024 bleiben getrennt.
 - **Tests und Build:** Node.js-Tests, Dateihygiene-Checks und Foundry-Modul-ZIP-Build. **Keine echten D&D-Beyond-Inhalte sind im Repository enthalten.**
 
+## Mit dem Testinventar ausprobieren
+
+Die Buchbibliothek ist bereits in Foundry aufrufbar. Zum Prüfen der Oberfläche kannst du das frei erfundene [Testbuch (JSON)](examples/book-inventory.sample.json) herunterladen und in **DDB Bridge – Buchbibliothek** auswählen. Die Oberfläche zählt Monster, Klassen, Zauber, Gegenstände und Journale auf und bietet den **Inventarbericht** als JSON an. Die Beispieldaten sind keine D&D-Beyond-Ausgabe; **noch werden keine echten Kompendien angelegt**.
+
 ## Installation (Experimentelle Alpha)
 
 Eine Manifest-URL ist **erst dann als Installationslink nutzbar, wenn der zugehörige GitHub-Release mit ZIP tatsächlich veröffentlicht und überprüft wurde**. Der GitHub-Quellcode ist nicht selbst das installierbare Modul.

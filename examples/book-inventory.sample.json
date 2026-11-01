@@ -1,0 +1,74 @@
+{
+  "provider": "fixture",
+  "bookId": "wanderers-bestarium",
+  "title": "Wanderer's Bestiarium (synthetische Testdaten)",
+  "edition": "2024",
+  "access": "confirmed",
+  "entries": [
+    {
+      "sourceId": "monster-1",
+      "kind": "monster",
+      "name": "Klippenkriecher",
+      "edition": "2024",
+      "dependencies": [],
+      "payload": {
+        "name": "Klippenkriecher",
+        "type": "npc"
+      }
+    },
+    {
+      "sourceId": "monster-2",
+      "kind": "monster",
+      "name": "Nebelhirsch",
+      "edition": "2024",
+      "dependencies": [],
+      "payload": {
+        "name": "Nebelhirsch",
+        "type": "npc"
+      }
+    },
+    {
+      "sourceId": "class-1",
+      "kind": "class",
+      "name": "Wegekundige",
+      "edition": "2024",
+      "dependencies": [],
+      "payload": {
+        "name": "Wegekundige",
+        "type": "class"
+      }
+    },
+    {
+      "sourceId": "spell-1",
+      "kind": "spell",
+      "name": "Mooslicht",
+      "edition": "2024",
+      "dependencies": [],
+      "payload": {
+        "name": "Mooslicht",
+        "type": "spell"
+      }
+    },
+    {
+      "sourceId": "item-1",
+      "kind": "item",
+      "name": "Kieselkompass",
+      "edition": "2024",
+      "dependencies": [],
+      "payload": {
+        "name": "Kieselkompass",
+        "type": "equipment"
+      }
+    },
+    {
+      "sourceId": "journal-1",
+      "kind": "journal",
+      "name": "Vorwort",
+      "edition": "2024",
+      "dependencies": [],
+      "payload": {
+        "name": "Vorwort"
+      }
+    }
+  ]
+}
