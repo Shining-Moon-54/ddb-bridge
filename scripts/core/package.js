@@ -52,7 +52,7 @@ export async function inspectPackage(bytes, options = {}) {
   const own = files.has("Map-Library/library.json");
   if (own) {
     const library = jsonParse(files.get("Map-Library/library.json"));
-    assert(library?.format === FORMAT && Array.isArray(library.entries) && Array.isArray(library.categories), "Unbekanntes Paketformat.");
+    assert((library?.format === FORMAT || library?.format === "map-library/1") && Array.isArray(library.entries) && Array.isArray(library.categories), "Unbekanntes Paketformat.");
     assert(files.has("Map-Library/checksums.json"), "Paket-Prüfsummen fehlen.");
     const sums = jsonParse(files.get("Map-Library/checksums.json"));
     for (const [path, hash] of Object.entries(sums)) {

@@ -16,7 +16,7 @@
     "scripts/main.js"
   ],
   "styles": [
-    "styles/ddb-bridge.css",
+    "styles/map-library.css",
     "styles/book-library.css"
   ],
   "persistentStorage": true,

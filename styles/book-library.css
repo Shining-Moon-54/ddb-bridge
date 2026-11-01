@@ -1,0 +1,9 @@
+.ddb-book-launcher { position: fixed; right: 18px; bottom: 74px; z-index: 60; padding: 7px 12px; border-radius: 6px; background: var(--color-bg-btn-minor-active, #343a40); color: var(--color-text-light-primary, #fff); cursor: pointer; }
+.ddb-books { display: grid; gap: 12px; padding: 16px; color: var(--color-text-primary, inherit); }
+.ddb-books h2, .ddb-books h3 { margin: 0; }
+.ddb-books-actions { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+.ddb-books-actions input { max-width: 100%; }
+.ddb-book-notice { padding: 9px; border-left: 3px solid #a67b4c; background: rgba(127,127,127,.10); }
+.ddb-book-error { color: #b12424; font-weight: 600; }
+.ddb-book-results table { width: 100%; border-collapse: collapse; }
+.ddb-book-results td, .ddb-book-results th { text-align: left; padding: 5px 9px; border-bottom: 1px solid rgba(127,127,127,.3); }
