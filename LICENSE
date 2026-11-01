@@ -1,0 +1,17 @@
+Map Library — Lizenzentscheidung ausstehend
+
+Für den eigenen Projektcode und die eigene Projektdokumentation wurde noch
+keine zusätzliche öffentliche Nutzungslizenz festgelegt. Eine Open-Source-
+Lizenz wird erst nach einer Entscheidung des Projektinitiators ergänzt.
+Alle anderweitig nicht eingeräumten Rechte bleiben vorbehalten.
+
+Diese Erklärung verändert keine Rechte, die sich aus den Bedingungen der
+Hosting-Plattform oder anderweitig ausdrücklich erteilten Genehmigungen ergeben.
+
+Ausnahme: vendor/fflate.js ist von Arjun Barrett entwickelt und unter der
+MIT-Lizenz lizenziert. Der vollständige Lizenztext steht in
+vendor/fflate.LICENSE. Weitere Entwicklungsabhängigkeiten behalten ihre
+jeweiligen Lizenzen und werden nicht als eigener Projektcode ausgegeben.
+
+Foundry Virtual Tabletop und zugehörige Marken gehören ihren jeweiligen
+Rechteinhabern. Dieses Projekt enthält keinen Foundry-Programmcode.
