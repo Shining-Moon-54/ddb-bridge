@@ -1,0 +1,41 @@
+{
+  "id": "ddb-bridge",
+  "title": "DDB Bridge",
+  "description": "Book Library + Map Library for Foundry VTT. Experimental alpha: D&D Beyond book import not yet implemented.",
+  "version": "0.1.0-alpha.1",
+  "authors": [
+    {
+      "name": "DDB Bridge contributors"
+    }
+  ],
+  "compatibility": {
+    "minimum": "14",
+    "maximum": "14"
+  },
+  "esmodules": [
+    "scripts/main.js"
+  ],
+  "styles": [
+    "styles/ddb-bridge.css",
+    "styles/book-library.css"
+  ],
+  "persistentStorage": true,
+  "flags": {
+    "canUpload": true
+  },
+  "url": "https://github.com/Shining-Moon-54/ddb-bridge",
+  "manifest": "https://raw.githubusercontent.com/Shining-Moon-54/ddb-bridge/main/module.json",
+  "download": "https://github.com/Shining-Moon-54/ddb-bridge/releases/download/v0.1.0-alpha.1/ddb-bridge-v0.1.0-alpha.1.zip",
+  "changelog": "https://github.com/Shining-Moon-54/ddb-bridge/blob/main/CHANGELOG.md",
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "6.0.0"
+        }
+      }
+    ]
+  }
+}
