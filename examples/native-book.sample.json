@@ -1,0 +1,47 @@
+{
+  "provider": "fixture",
+  "bookId": "coast-of-mist",
+  "title": "Küste des Nebels (frei erfundene Testdaten)",
+  "edition": "2024",
+  "access": "confirmed",
+  "entries": [
+    {
+      "sourceId": "test-spell-01",
+      "kind": "spell",
+      "payload": {
+        "format": "foundry-dnd5e-v6",
+        "name": "Lichtfunke (Test)",
+        "type": "spell",
+        "system": {
+          "level": 0,
+          "school": "evo",
+          "description": {
+            "value": "Ein frei erfundener Testzauber ohne automatische Activity."
+          }
+        }
+      }
+    },
+    {
+      "sourceId": "test-item-01",
+      "kind": "item",
+      "payload": {
+        "format": "foundry-dnd5e-v6",
+        "name": "Kieselstein-Kompass (Test)",
+        "type": "equipment",
+        "system": {
+          "description": {
+            "value": "Eine einfache erfundene Reiseausrüstung."
+          }
+        }
+      }
+    },
+    {
+      "sourceId": "test-monster-01",
+      "kind": "monster",
+      "payload": {
+        "name": "Test-Wasserwesen",
+        "type": "npc"
+      }
+    }
+  ]
+}
