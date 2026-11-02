@@ -6,7 +6,7 @@
 
 **Eine Foundry-VTT-v14-Erweiterung für zwei Bibliotheksbereiche:** **Book Library** (D&D-Beyond-Quellenbücher) und die übernommene **Map Library** (Szenen-/Kartenarchiv).
 
-> **Stand 0.1.0-alpha.1:** Die vorhandene Map Library wurde in ein eigenständiges Modul mit ID `ddb-bridge` übertragen. Für die Book Library gibt es einen lokalen Inventarplaner und eine Vorschau für normierte JSON-Testdaten. **Noch kein Abruf von D&D Beyond und kein Import gekaufter Bücher oder Monster in Foundry-Kompendien.**
+> **Stand 0.1.0-alpha.1 (Entwicklungsbranch):** Map Library ist integriert. Book Library inventarisiert Buch-JSONs; zusätzlich gibt es einen ersten **lokalen Testimport** explizit vorbereiteter dnd5e-v6-Zauber/Gegenstände in **eigene Welt-Kompendien**. **Kein Abruf von D&D Beyond, kein Import gekaufter Bücher, Monster oder Klassen.**
 
 ## Ziel: Ganze Bücher statt einzelner Charaktere
 
@@ -15,13 +15,13 @@ Ein Benutzer soll ein auf D&D Beyond erworbenes bzw. berechtigt zugängliches Qu
 ## Bereits im Code
 
 - **Map Library:** Archivieren, Kategorien, Suche, portable ZIPs, Szenen- und Medienverwaltung, Papierkorb, Cloudexport (Google Drive/Dropbox mit benutzereigener Einrichtung). Bestehende Funktionen stammen aus der experimentellen Map Library v0.4.0-alpha.7 und müssen in einer echten Foundry-V14-Testwelt geprüft werden.
-- **Book Library:** GM-Oberfläche über **Spieleinstellungen → Moduleinstellungen → DDB Bridge – Buchbibliothek** sowie die Schaltfläche „DDB Bridge – Bücher“. Aus lokal hochgeladener normierter JSON kann eine Inhaltsübersicht ohne Buchtext-Ausgabe erstellt und ein Inventarbericht gespeichert werden.
+- **Book Library:** GM-Oberfläche über **Spieleinstellungen → Moduleinstellungen → DDB Bridge – Buchbibliothek** sowie die Schaltfläche „DDB Bridge – Bücher“. Lokales Buchinventar und Bericht; ein ausdrücklich zu bestätigender Testimport legt eigene Welt-Kompendien für vorbereitete Zauber/Gegenstände an (Branch-Funktion, noch keine Foundry-Laufzeitabnahme).
 - **Importplanung:** Stabile Herkunftsschlüssel aus Quelle, Buch-ID, Inhaltstyp, Quell-ID, Edition und Variante. Dubletten und ungültige Datensätze werden erkannt; 2014/2024 bleiben getrennt.
 - **Tests und Build:** Node.js-Tests, Dateihygiene-Checks und Foundry-Modul-ZIP-Build. **Keine echten D&D-Beyond-Inhalte sind im Repository enthalten.**
 
 ## Mit dem Testinventar ausprobieren
 
-Die Buchbibliothek ist bereits in Foundry aufrufbar. Zum Prüfen der Oberfläche kannst du das frei erfundene [Testbuch (JSON)](examples/book-inventory.sample.json) herunterladen und in **DDB Bridge – Buchbibliothek** auswählen. Die Oberfläche zählt Monster, Klassen, Zauber, Gegenstände und Journale auf und bietet den **Inventarbericht** als JSON an. Die Beispieldaten sind keine D&D-Beyond-Ausgabe; **noch werden keine echten Kompendien angelegt**.
+Die Buchbibliothek ist bereits in Foundry aufrufbar. Zum Prüfen der Oberfläche kannst du das frei erfundene [Testbuch (JSON)](examples/book-inventory.sample.json) herunterladen und in **DDB Bridge – Buchbibliothek** auswählen. Die Oberfläche zählt Monster, Klassen, Zauber, Gegenstände und Journale auf und bietet den **Inventarbericht** als JSON an. Die Beispieldaten sind keine D&D-Beyond-Ausgabe. Für den neuen lokalen Kompendien-Test siehe [eigene Anleitung](docs/LOCAL_IMPORT_ALPHA.md) und [native Testdaten](examples/native-book.sample.json); der gewöhnliche Inventarbericht schreibt nichts.
 
 ## Installation (Experimentelle Alpha)
 
@@ -45,6 +45,7 @@ Die alte Map Library verbleibt mit ihren Originaldaten unter `Data/modules/map-l
 
 ## Unterlagen
 
+- [Lokaler Testimport in Welt-Kompendien](docs/LOCAL_IMPORT_ALPHA.md)
 - [Buchimport: Manifest und Abnahmekriterien](docs/DDB_BRIDGE_PROJEKTMANIFEST.md)
 - [Internes Buchformat](docs/DDB_BRIDGE_DATENVERTRAG.md)
 - [Fusions- und Migrationsplan](docs/DDB_BRIDGE_FUSION.md)
