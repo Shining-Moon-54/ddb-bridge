@@ -101,6 +101,17 @@ test("2014/2024 have separate source identities and isolated pack names", () => 
   assert.notEqual(a.candidates[0].pack.name, b.candidates[0].pack.name);
 });
 
+test("mixed-edition entries in the same book create separate packs", async () => {
+  const prepared = prepareNativeBook(book([spell("same", "2014"), spell("same", "2024")]));
+  assert.equal(prepared.candidates.length, 2);
+  assert.notEqual(prepared.candidates[0].pack.name, prepared.candidates[1].pack.name);
+  const runtime = fakeRuntime();
+  const report = await importPreparedBook(prepared, runtime);
+  assert.equal(report.created, 2);
+  assert.equal(report.packs.length, 2);
+  assert.equal(runtime.createdPacks, 2);
+});
+
 test("never writes when system/version is unsupported or an existing pack collides", async () => {
   const prepared = prepareNativeBook(book());
   const runtime = fakeRuntime();
