@@ -36,12 +36,12 @@ function hash(value) {
   }
   return state.toString(16).padStart(8, "0");
 }
-function packInfo(book, kind) {
+function packInfo(book, kind, edition) {
   const group = kind === "spell" ? "spells" : "items";
-  const identity = JSON.stringify([book.provider, book.bookId, book.edition]);
+  const identity = JSON.stringify([book.provider, book.bookId, edition]);
   return {
-    name: "ddb-bridge-" + slug(book.bookId) + "-" + hash(identity) + "-" + group,
-    label: "DDB Bridge | " + book.title.slice(0, 75) + " | " + book.edition + " | " + group,
+    name: "ddb-bridge-" + slug(book.bookId) + "-" + edition + "-" + hash(identity) + "-" + group,
+    label: "DDB Bridge | " + book.title.slice(0, 75) + " | " + edition + " | " + group,
     type: "Item"
   };
 }
@@ -98,7 +98,7 @@ export function prepareNativeBook(book) {
       omitted.push({ sourceKey: key, reason: "unsafe-or-large-payload" });
       continue;
     }
-    const pack = packInfo(book, entry.kind);
+    const pack = packInfo(book, entry.kind, entry.edition ?? book.edition);
     candidates.push({
       sourceKey: key,
       pack,
