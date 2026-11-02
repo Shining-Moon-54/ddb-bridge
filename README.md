@@ -6,7 +6,7 @@
 
 **Eine Foundry-VTT-v14-Erweiterung für zwei Bibliotheksbereiche:** **Book Library** (D&D-Beyond-Quellenbücher) und die übernommene **Map Library** (Szenen-/Kartenarchiv).
 
-> **Stand 0.1.0-alpha.1:** Die vorhandene Map Library wurde in ein eigenständiges Modul mit ID `ddb-bridge` übertragen. Für die Book Library gibt es einen lokalen Inventarplaner und eine Vorschau für normierte JSON-Testdaten. **Noch kein Abruf von D&D Beyond und kein Import gekaufter Bücher oder Monster in Foundry-Kompendien.**
+ > **Stand 0.1.0-alpha.2:** Direkter D&D-Beyond-Buchimport über die installierte DDB-Importer-Erweiterung als Test-Alpha. Die Map Library bleibt integriert. Laufzeittest in Foundry V14 steht noch aus.
 
 ## Ziel: Ganze Bücher statt einzelner Charaktere
 
@@ -15,17 +15,13 @@ Ein Benutzer soll ein auf D&D Beyond erworbenes bzw. berechtigt zugängliches Qu
 ## Bereits im Code
 
 - **Map Library:** Archivieren, Kategorien, Suche, portable ZIPs, Szenen- und Medienverwaltung, Papierkorb, Cloudexport (Google Drive/Dropbox mit benutzereigener Einrichtung). Bestehende Funktionen stammen aus der experimentellen Map Library v0.4.0-alpha.7 und müssen in einer echten Foundry-V14-Testwelt geprüft werden.
-- **Book Library:** GM-Oberfläche über **Spieleinstellungen → Moduleinstellungen → DDB Bridge – Buchbibliothek** sowie die Schaltfläche „DDB Bridge – Bücher“. Aus lokal hochgeladener normierter JSON kann eine Inhaltsübersicht ohne Buchtext-Ausgabe erstellt und ein Inventarbericht gespeichert werden.
+- **Book Library:** D&D-Beyond-Bücher direkt über die bestehende DDB-Importer-Anmeldung auswählen und importieren. Quelle ist der DDB-Importer-Buchkatalog; nicht jedes aufgeführte Buch muss für das Konto freigeschaltet sein.
 - **Importplanung:** Stabile Herkunftsschlüssel aus Quelle, Buch-ID, Inhaltstyp, Quell-ID, Edition und Variante. Dubletten und ungültige Datensätze werden erkannt; 2014/2024 bleiben getrennt.
 - **Tests und Build:** Node.js-Tests, Dateihygiene-Checks und Foundry-Modul-ZIP-Build. **Keine echten D&D-Beyond-Inhalte sind im Repository enthalten.**
 
-## Mit dem Testinventar ausprobieren
-
-Die Buchbibliothek ist bereits in Foundry aufrufbar. Zum Prüfen der Oberfläche kannst du das frei erfundene [Testbuch (JSON)](examples/book-inventory.sample.json) herunterladen und in **DDB Bridge – Buchbibliothek** auswählen. Die Oberfläche zählt Monster, Klassen, Zauber, Gegenstände und Journale auf und bietet den **Inventarbericht** als JSON an. Die Beispieldaten sind keine D&D-Beyond-Ausgabe; **noch werden keine echten Kompendien angelegt**.
-
 ## Installation (Experimentelle Alpha)
 
-Eine Manifest-URL ist **erst dann als Installationslink nutzbar, wenn der zugehörige GitHub-Release mit ZIP tatsächlich veröffentlicht und überprüft wurde**. Der GitHub-Quellcode ist nicht selbst das installierbare Modul.
+Nach Veröffentlichung der Alpha wird die Manifest-URL für die Foundry-Modulinstallation bereitgestellt.
 
 Entwicklung:
 ```bash
