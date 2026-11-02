@@ -1,6 +1,7 @@
 import { ID } from "../core/constants.js";
 import { requireGM } from "../foundry/storage.js";
 import { planBookImport } from "./book-plan.js";
+import { prepareNativeBook, importPreparedBook } from "./book-native.js";
 
 function element(tag, text, css = "") {
   const e = document.createElement(tag);
@@ -29,7 +30,7 @@ export function registerBookLibrary({ openMaps }) {
       requireGM();
       const root = element("section", undefined, "ddb-books");
       root.append(element("h2", "DDB Bridge – Buchbibliothek"));
-      root.append(element("p", "Erstes Entwicklungsmodul: Prüfen und Inventarisieren von normierten Buch-JSONs. Noch keine D&D-Beyond-Anmeldung, kein gekaufter Buchabruf und kein Schreiben von Monstern oder Charakteroptionen in Kompendien.", "ddb-book-notice"));
+      root.append(element("p", "Lokales Buchinventar und begrenzter Testimport nativer Zauber/Gegenstände in eigene Welt-Kompendien. Kein D&D-Beyond-Zugang; Monster und Charakteroptionen werden noch nicht importiert.", "ddb-book-notice"));
 
       const actions = element("div", undefined, "ddb-books-actions");
       const input = element("input");
@@ -58,7 +59,7 @@ export function registerBookLibrary({ openMaps }) {
           const plan = planBookImport(obj);
           result.append(element("h3", plan.title));
           result.append(element("p", `Quelle: ${plan.provider} · Edition: ${plan.edition} · Einträge: ${plan.total} · geplant: ${plan.planned} · ohne Daten: ${plan.unsupported} · übersprungen: ${plan.skipped}`));
-          const warning = element("p", "Nur Inventarplanung – nicht authentifiziert. Die enthaltenen Zugangsaussagen der Datei wurden nicht unabhängig geprüft. Es wurden keine Foundry-Dokumente erstellt.", "ddb-book-notice");
+          const warning = element("p", "Inventar ist nicht authentifiziert: Zugangsaussagen der Datei wurden nicht unabhängig geprüft. Erst eine ausdrücklich bestätigte lokale Testimport-Aktion schreibt Dokumente.", "ddb-book-notice");
           result.append(warning);
           const tbl = element("table");
           const thead = element("thead");
@@ -75,6 +76,61 @@ export function registerBookLibrary({ openMaps }) {
           save.type = "button";
           save.addEventListener("click", () => safeExport(plan, "ddb-bridge-buchinventar.json"));
           result.append(save);
+
+          // Only local/synthetic fixtures with explicitly native dnd5e-v6 payloads
+          // can pass this alpha import step. This is not a DDB ownership check.
+          if (["fixture", "local"].includes(obj.provider)) {
+            try {
+              const prepared = prepareNativeBook(obj);
+              result.append(element("p",
+                "Lokaler Testimport: " + prepared.summary.ready + " native Item-Dokumente bereit; " +
+                prepared.summary.omitted + " Einträge noch ohne Konverter. " +
+                "Keine Monster-, Klassen- oder Journalkonvertierung.",
+                "ddb-book-notice"
+              ));
+              if (prepared.summary.ready) {
+                const importButton = element("button", "Testdaten in eigene Welt-Kompendien importieren");
+                importButton.type = "button";
+                importButton.addEventListener("click", async () => {
+                  requireGM();
+                  const confirmed = window.confirm(
+                    "Nur vertrauenswürdige lokale Testdaten importieren. " +
+                    "DDB Bridge legt eigene Welt-Kompendien an; vorhandene Dokumente werden nicht überschrieben. Fortfahren?"
+                  );
+                  if (!confirmed) return;
+                  importButton.disabled = true;
+                  try {
+                    const report = await importPreparedBook(prepared, {
+                      requireGM,
+                      systemId: game.system?.id,
+                      generation: Number(game.release?.generation),
+                      packs: game.packs,
+                      createCompendium: metadata =>
+                        foundry.documents.collections.CompendiumCollection.createCompendium(metadata)
+                    });
+                    result.append(element("p",
+                      "Import: " + report.created + " neu, " + report.existing +
+                      " bereits vorhanden, " + report.failed + " fehlgeschlagen. " +
+                      "Welt-Kompendien: " + report.packs.join(", ")
+                    ));
+                    if (report.failed) {
+                      result.append(element("p",
+                        "Fehler beim Foundry-Dokumentaufbau. Keine Rohdaten in Berichten ausgegeben.",
+                        "ddb-book-error"
+                      ));
+                    }
+                  } catch (error) {
+                    result.append(element("p", "Import abgebrochen: " + error.message, "ddb-book-error"));
+                  } finally {
+                    importButton.disabled = false;
+                  }
+                });
+                result.append(importButton);
+              }
+            } catch (error) {
+              result.append(element("p", "Testimport nicht bereit: " + error.message, "ddb-book-notice"));
+            }
+          }
         } catch (error) {
           result.append(element("p", `Buchinventar nicht lesbar: ${error.message}`, "ddb-book-error"));
         }
